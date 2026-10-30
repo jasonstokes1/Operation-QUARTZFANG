@@ -39,6 +39,34 @@
 
 ---
 
+## The Environment
+
+SemiCrest runs four Linux servers on one isolated network. The public design portal (`sc-portal01`) is the only server exposed to the internet, and under normal conditions it is the only one that ever starts an internal connection — the database, registry and admin platform never talk to each other directly. The attacker compromised the portal and used it as the launch point to reach all three.
+
+```mermaid
+flowchart LR
+    WAN["Internet<br/>attacker 203.0.113.87"]
+
+    subgraph SemiCrest["SemiCrest network — 10.5.0.0/24"]
+        portal["sc-portal01 — 10.5.0.10<br/>Design Portal + Preview API<br/>ENTRY POINT"]
+        db["sc-db01 — 10.5.0.20<br/>PostgreSQL database"]
+        registry["sc-registry01 — 10.5.0.30<br/>Harbor container registry"]
+        admin["sc-admin01 — 10.5.0.40<br/>Internal admin platform"]
+    end
+
+    WAN -->|HTTPS 443 / 8080| portal
+    portal -->|5432| db
+    portal -->|443| registry
+    portal -->|8443| admin
+
+    classDef entry stroke:#d9534f,stroke-width:3px;
+    class portal entry;
+```
+
+*The portal was the attacker's beachhead: every later action against the database, registry and admin platform came from `sc-portal01` (10.5.0.10) — which is how the stolen service account could be told apart from the real admins.*
+
+---
+
 ## How the Attack Worked
 
 | Step | Time (UTC) | What happened |
