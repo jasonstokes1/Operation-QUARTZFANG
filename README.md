@@ -1,7 +1,7 @@
 # Operation QUARTZFANG — AI-Orchestrated Espionage: SSRF to Exfiltration
 
 **Analyst:** Jason Stokes · **Completed:** 29 October 2026 · **Platform:** Microsoft Sentinel (KQL)  
-📄 **[Full incident report (PDF)](Operation-QUARTZFANG-Incident-Report.pdf)**
+**[Full incident report (PDF)](Operation-QUARTZFANG-Incident-Report.pdf)**
 
 > **Lab notice:** Threat hunt completed during my **LOG(N) Pacific internship** in the Cyber Range lab environment. The scenario, company, people and log data are simulated. The attack reconstructs **Campaign C0062 (GTG-1002)**, the first publicly documented AI-orchestrated cyber-espionage campaign, disclosed by Anthropic in November 2025.
 
@@ -19,12 +19,12 @@
 
 | | |
 |---|---|
-| 🎯 **28 / 28** | investigation flags solved — full hunt, on time |
-| 🖥️ **4** | hosts traced end to end (portal, database, registry, admin) |
-| 🤖 **5** | human decision points found in the AI agent's own log |
-| 🔍 **2** | AI-fabricated "successes" disproved against the servers' own records |
-| 🚩 **9** | indicators of compromise identified for blocking |
-| 🛡️ **4** | detection rules / hardening recommendations written |
+| **28 / 28** | investigation objectives completed |
+| **4** | hosts traced end to end (portal, database, registry, admin) |
+| **5** | human decision points found in the AI agent's own log |
+| **2** | AI-fabricated "successes" disproved against the servers' own records |
+| **9** | indicators of compromise identified for blocking |
+| **4** | detection rules / hardening recommendations written |
 
 **Classification:** AI-orchestrated espionage — a familiar set of attack steps, carried out by an AI agent with a human approving each stage (human at the gates, machine between them).
 
